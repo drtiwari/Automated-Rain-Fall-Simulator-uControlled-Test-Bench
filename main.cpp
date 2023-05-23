@@ -4,10 +4,10 @@
 #include           <Chrono.h>
 Chrono             wait;                                                // Timer to use inspite of delay in Linear actuator
 Chrono             samplingIN;                                          // Sampling every one sec for IN flow sensor
-Chrono			       samplingOUT;											                    // Sampling every one sec for OUT flow sensor
+Chrono		   samplingOUT;											                    // Sampling every one sec for OUT flow sensor
 
 /////////////////////PUMP DEFINITIONS///////////////////////////////////
-#define			       pump						              12						          // Output pin to control pump state
+#define	           pump				12			// Output pin to control pump state
 #define            solenoid                     13                      // Output pin to control solenoid valve
 
 //////////////////////NEXTION DEFINITIONS///////////////////////////////
@@ -34,7 +34,7 @@ NexNumber          nVol               =         NexNumber(0,13,"nVol");
 
 NexText            tRnrt              =         NexText(1,7,"tRnrt");
 NexText            tTtlrn             =         NexText(1,8,"tTtlrn");
-NexText			       tIng				        =         NexText(1,18,"tIng");
+NexText		   tIng		      =         NexText(1,18,"tIng");
 NexText            tRuno              =         NexText(1,9,"tRuno");
 NexText            tPerm              =         NexText(1,10,"tPerm");
 NexText            tInc               =         NexText(1,20,"tInc");
@@ -163,14 +163,14 @@ void GetFLOWINData() {
      samplingIN.restart();
 
      l_minuteIN = (flow_frequencyIN / Calibration_factorIN);            // l/min calculation for flow sensor
-	   //l_minuteIN = l_minuteIN / 60.0;                                     // l/min rate is converted to l/sec
+     //l_minuteIN = l_minuteIN / 60.0;                                     // l/min rate is converted to l/sec
      volIN += l_minuteIN/60.0;                                          // liquid volume is updated for every one second, first l/min is converted to l/sec
-	   flow_frequencyIN = 0;                                              // Reset Counter
+	   flow_frequencyIN = 0;                                        // Reset Counter
 
-	   WaterIN = (int) volIN;                                             // CASTING - Convert float volIN to int WaterIN for comparsion of user set value
+	   WaterIN = (int) volIN;                                       // CASTING - Convert float volIN to int WaterIN for comparsion of user set value
 
-	   Int_Pio = l_minuteIN*60.0;                                         // Application rate l/min conversion to l/hr for mm/hr values
-	   Pio_Ttl = volIN*60.0;                                              // Total rain conversion to mm by multiplying with 60
+	   Int_Pio = l_minuteIN*60.0;                                    // Application rate l/min conversion to l/hr for mm/hr values
+	   Pio_Ttl = volIN*60.0;                                         // Total rain conversion to mm by multiplying with 60
     }
 }
 
@@ -219,7 +219,7 @@ void GetFLOWOUTData() {
 	    l_minuteOUT = (flow_frequencyOUT / Calibration_factorOUT);
 	    //l_minuteOUT = l_minuteOUT / 60.0;
 	    volOUT += l_minuteOUT / 60.0;
-	    flow_frequencyOUT = 0;                                            // Reset Counter
+	    flow_frequencyOUT = 0;                                     // Reset Counter
     }
 }
 
@@ -240,7 +240,7 @@ void DisplayFLOWOUTData() {
 }
 
 void NetPermiability() {
-	  Permiab = (1-(volOUT/volIN))*100;							                       // Formula for Net Permeability Calculation
+	  Permiab = (1-(volOUT/volIN))*100;				// Formula for Net Permeability Calculation
 
 	  Serial.print(" Net Permiability: ");
     Serial.print(Permiab, 0);                                            // Print permiability of net
@@ -306,7 +306,7 @@ void loop() {
       //SerialLAData();                                                   // Send LA results to serial port for debugging
       DisplayLAData();                                                  // Send LA results to NEXTION display
 	    //FLOW METER (1) IN - INGRESSO
-	    GetFLOWINData();                                                  // Flow SensorsIN data
+	    GetFLOWINData();                                            // Flow SensorsIN data
       SerialFLOWINData();
       DisplayFLOWINData();                                              // Display FlowIN results to NEXTION display
       //FLOW METER (2) OUT - SCARICO
