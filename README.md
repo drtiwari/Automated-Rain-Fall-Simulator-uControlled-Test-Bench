@@ -10,3 +10,5 @@ The design and conceptualization (R&D) document is uploaded here as <b>Automatic
 <b>Machine Showcase Video Link:</b>
 
 [![Rainfall simulator Test Bench](https://img.youtube.com/vi/E8ZFBqE6dyw/maxresdefault.jpg)](https://www.youtube.com/embed/E8ZFBqE6dyw) </br>
+
+**@ Ing. Amber Tiwari (PhD)**
